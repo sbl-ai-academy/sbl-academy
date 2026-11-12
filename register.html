@@ -60,9 +60,9 @@ button,.btn{display:block;width:100%;margin-top:14px;padding:13px;border:0;borde
 <div class="row"><span>Lessons</span><span>7 മോഡ്യൂൾ</span></div>
 <div class="row"><span>Student</span><span id="who"></span></div>
 <p class="price">₹<span id="amt"></span></p>
-<p class="note">Amount will be auto-filled in your UPI app: ₹<span id="amt3"></span></p>
-<a class="btn" id="upi" href="#" target="_blank" rel="noopener">UPI ആപ്പ് വഴി പണമടയ്ക്കുക</a>
-<p class="note">ഫോണിൽ മാത്രം ബട്ടൺ പ്രവർത്തിക്കും. കമ്പ്യൂട്ടറിൽ ആണെങ്കിൽ താഴെയുള്ള QR സ്കാൻ ചെയ്യുക.</p>
+<p class="note">Amount to pay: ₹<span id="amt3"></span></p>
+<a class="btn" id="upi" hidden href="#" target="_blank" rel="noopener">UPI ആപ്പ് വഴി പണമടയ്ക്കുക</a>
+<p class="warn">പണമടയ്ക്കുന്ന വിധം:<br>1) താഴെ "UPI ID കോപ്പി ചെയ്യുക" അമർത്തുക.<br>2) PhonePe / GPay / Paytm തുറന്ന് "Pay to UPI ID" (അല്ലെങ്കിൽ മൊബൈൽ നമ്പർ) തിരഞ്ഞെടുത്ത് ID പേസ്റ്റ് ചെയ്യുക.<br>3) ₹<span id="amt4"></span> നൽകി പണമടയ്ക്കുക.<br>അല്ലെങ്കിൽ QR സ്ക്രീൻഷോട്ട് എടുത്ത് ആപ്പിൽ Scan → Gallery വഴി സ്കാൻ ചെയ്യുക.</p>
 <div id="qr" style="display:flex;justify-content:center;margin:12px 0;background:#fff;padding:10px;border-radius:10px"></div>
 <button class="alt" id="cp">UPI ID കോപ്പി ചെയ്യുക</button>
 <p class="note">അല്ലെങ്കിൽ UPI ID: <b id="upiid"></b> ലേക്ക് ₹<span id="amt2"></span> അയയ്ക്കുക.</p>
@@ -97,7 +97,7 @@ db.users=db.users||{};
 function show(n){$("bn").hidden=n!==1;["v1","v2","v3"].forEach(function(v,i){$(v).hidden=(i+1)!==n;$("s"+(i+1)).className=(i+1)<=n?"on":""});}
 function go(){var u=db.users[db.cur];if(!u){show(1);return}
 if(u.paid){$("who3").textContent=u.name;$("wa").href="https://wa.me/966579560522?text="+encodeURIComponent("New registration - AI Video Creation Basic\nName: "+u.name+"\nPhone: "+db.cur+"\nEmail: "+u.email+"\nUPI Txn ID: "+u.txn+"\nAmount: Rs "+PRICE+"\nPayment screenshot: attached below");show(3)}
-else{$("who").textContent=u.name;$("amt").textContent=PRICE;$("amt2").textContent=PRICE;$("amt3").textContent=PRICE;$("upiid").textContent=UPI_ID;
+else{$("who").textContent=u.name;$("amt").textContent=PRICE;$("amt2").textContent=PRICE;$("amt3").textContent=PRICE;$("amt4").textContent=PRICE;$("upiid").textContent=UPI_ID;
 $("upi").href="upi://pay?pa="+encodeURIComponent(UPI_ID)+"&pn="+encodeURIComponent(PAYEE)+"&am="+PRICE+"&cu=INR&tn="+encodeURIComponent("AI Video Creation Basic");show(2);try{$("qr").innerHTML="";new QRCode($("qr"),{text:$("upi").href,width:170,height:170})}catch(e){}}}
 $("reg").onclick=function(){var n=$("name").value.trim(),p=$("phone").value.trim(),e=$("email").value.trim();
 if(n.length<2)return $("m1").textContent="പേര് നൽകുക";
