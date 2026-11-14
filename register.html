@@ -35,6 +35,8 @@ button,.btn{display:block;width:100%;margin-top:14px;padding:13px;border:0;borde
 .back{width:auto;display:inline-block;padding:8px 14px;margin:0 0 10px;font-size:.9rem}
 .help{background:#16a34a;color:#fff}
 .warn{background:rgba(250,200,60,.18);border:1px solid rgba(240,195,109,.7);border-radius:10px;padding:10px;font-size:.9rem;margin:10px 0}
+.tabs{display:flex;gap:8px;margin:10px 0}.tabs button{margin-top:0;padding:10px 4px;font-size:.9rem}.tab.on{background:var(--pr);color:var(--pt)}
+#rzp{background:#7c3aed;color:#fff}
 </style>
 </head>
 <body>
@@ -60,14 +62,23 @@ button,.btn{display:block;width:100%;margin-top:14px;padding:13px;border:0;borde
 <div class="row"><span>Lessons</span><span>7 മോഡ്യൂൾ</span></div>
 <div class="row"><span>Student</span><span id="who"></span></div>
 <p class="price">₹<span id="amt"></span></p>
-<p class="note">Amount to pay: ₹<span id="amt3"></span></p>
-<a class="btn" id="upi" hidden href="#" target="_blank" rel="noopener">UPI ആപ്പ് വഴി പണമടയ്ക്കുക</a>
+<p class="note">Amount to pay: ₹<span id="amt3"></span> — ഒരു രീതി തിരഞ്ഞെടുക്കുക</p>
+<a id="upi" hidden href="#"></a>
+<div class="tabs"><button class="alt tab on" id="t1">1. Razorpay</button><button class="alt tab" id="t2">2. UPI QR / ID</button></div>
+<div id="p1">
+<a class="btn" id="rzp" href="https://rzp.io/rzp/4n3VASN" target="_self">Pay ₹299 – UPI / Card / Net Banking</a>
+<p class="note">പേയ്‌മെന്റ് വിജയിച്ച് ഈ പേജിലേക്ക് തിരികെ വന്നാൽ Confirmation പേജ് തനിയെ തുറക്കും. തുറന്നില്ലെങ്കിൽ ലഭിച്ച Payment ID (pay_...) താഴെ നൽകുക.</p>
+</div>
+<div id="p2" hidden>
 <p class="warn">പണമടയ്ക്കുന്ന വിധം:<br>1) താഴെ "UPI ID കോപ്പി ചെയ്യുക" അമർത്തുക.<br>2) PhonePe / GPay / Paytm തുറന്ന് "Pay to UPI ID" (അല്ലെങ്കിൽ മൊബൈൽ നമ്പർ) തിരഞ്ഞെടുത്ത് ID പേസ്റ്റ് ചെയ്യുക.<br>3) ₹<span id="amt4"></span> നൽകി പണമടയ്ക്കുക.<br>അല്ലെങ്കിൽ QR സ്ക്രീൻഷോട്ട് എടുത്ത് ആപ്പിൽ Scan → Gallery വഴി സ്കാൻ ചെയ്യുക.</p>
 <div id="qr" style="display:flex;justify-content:center;margin:12px 0;background:#fff;padding:10px;border-radius:10px"></div>
 <button class="alt" id="cp">UPI ID കോപ്പി ചെയ്യുക</button>
 <p class="note">അല്ലെങ്കിൽ UPI ID: <b id="upiid"></b> ലേക്ക് ₹<span id="amt2"></span> അയയ്ക്കുക.</p>
-<label>പേയ്‌മെന്റ് കഴിഞ്ഞ് UPI Transaction ID (12 അക്കം) നൽകുക</label>
-<input id="txn" inputmode="numeric" maxlength="12">
+<p class="note">അല്ലെങ്കിൽ മൊബൈൽ നമ്പർ (PhonePe / GPay / Paytm): <b>9544035833</b></p>
+<p class="note">പണമടച്ച ശേഷം 12 അക്ക UPI Ref No. താഴെ നൽകുക.</p>
+</div>
+<label>Transaction ID (12 അക്ക UPI Ref No.) അല്ലെങ്കിൽ Razorpay Payment ID (pay_...)</label>
+<input id="txn" maxlength="20" autocomplete="off">
 <div class="msg" id="m2"></div>
 <button id="pay">പേയ്‌മെന്റ് സ്ഥിരീകരിക്കുക</button>
 <a class="btn help" id="help" href="https://wa.me/966579560522?text=Hi%2C%20I%20need%20help%20with%20payment%20-%20AI%20Video%20Creation%20Basic" target="_blank" rel="noopener">💬 Help – WhatsApp</a>
@@ -86,7 +97,7 @@ button,.btn{display:block;width:100%;margin-top:14px;padding:13px;border:0;borde
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
 // ===== ഇവിടെ മാറ്റുക =====
-var PRICE=299, UPI_ID="9544035833-7@ybl", PAYEE="SBL AI Academy";
+var API_URL="", PRICE=299, UPI_ID="9544035833-7@ybl", PAYEE="SBL AI Academy";
 // =========================
 var $=function(i){return document.getElementById(i)};
 var store={};
@@ -104,15 +115,28 @@ if(n.length<2)return $("m1").textContent="പേര് നൽകുക";
 if(!/^[6-9]\d{9}$/.test(p))return $("m1").textContent="ശരിയായ 10 അക്ക മൊബൈൽ നമ്പർ നൽകുക";
 if(!/^\S+@\S+\.\S+$/.test(e))return $("m1").textContent="ശരിയായ ഇമെയിൽ നൽകുക";
 $("m1").textContent="";var old=db.users[p];db.users[p]={name:n,email:e,paid:old?old.paid:false,txn:old?old.txn:""};db.cur=p;sv(db);go()};
+function fin(t){var u=db.users[db.cur];u.paid=true;u.txn=t;sv(db);go()}
+function confirmPay(t){var m=$("m2"),u=db.users[db.cur];m.textContent="";
+if(!API_URL){fin(t);return}
+var rz=/^pay_/.test(t),e=encodeURIComponent;
+m.style.color="var(--mu)";m.textContent="Checking payment...";
+fetch(API_URL+"?action="+(rz?"verify":"log")+"&name="+e(u.name)+"&phone="+e(db.cur)+"&email="+e(u.email)+"&ref="+e(t))
+.then(function(r){return r.json()})
+.then(function(d){if(d.ok){fin(t)}else{m.style.color="var(--er)";m.textContent=d.error||"Payment could not be verified"}})
+.catch(function(){if(rz){m.style.color="var(--er)";m.textContent="Could not check the payment. Check internet and try again, or use Help on WhatsApp"}else{fin(t)}})}
 $("pay").onclick=function(){var t=$("txn").value.trim();
-if(!/^\d{12}$/.test(t)){$("m2").style.color="var(--er)";$("txn").style.borderColor="var(--er)";return $("m2").textContent="Transaction ID 12 അക്കം ആയിരിക്കണം (ഇപ്പോൾ "+t.length+" അക്കം)"}$("txn").style.borderColor="";$("m2").style.color="";
-$("m2").textContent="";var u=db.users[db.cur];u.paid=true;u.txn=t;sv(db);go()};
+if(!(/^\d{12}$/.test(t)||/^pay_[A-Za-z0-9]{14}$/.test(t))){$("m2").style.color="var(--er)";$("txn").style.borderColor="var(--er)";return $("m2").textContent="Transaction ID തെറ്റാണ്: 12 അക്ക UPI Ref No. അല്ലെങ്കിൽ pay_ ൽ തുടങ്ങുന്ന Razorpay Payment ID നൽകുക"}$("txn").style.borderColor="";$("m2").style.color="";
+confirmPay(t)};
 $("out").onclick=function(){db.cur="";sv(db);$("phone").value="";go()};
 $("upi").onclick=function(e){e.preventDefault();var u=$("upi").href;try{window.top.location.href=u}catch(x){window.location.href=u}$("m2").style.color="var(--mu)";$("m2").textContent="ആപ്പ് തുറന്നില്ലെങ്കിൽ മുകളിലെ QR സ്കാൻ ചെയ്യുക അല്ലെങ്കിൽ UPI ID കോപ്പി ചെയ്ത് പ്രയോഗിക്കുക";};
 $("cp").onclick=function(){try{navigator.clipboard.writeText(UPI_ID);$("cp").textContent="കോപ്പി ചെയ്തു ✓"}catch(e){$("cp").textContent=UPI_ID}};
 $("b2").onclick=function(){var u=db.users[db.cur]||{};$("name").value=u.name||"";$("phone").value=db.cur||"";$("email").value=u.email||"";show(1)};
 $("b3").onclick=function(){var u=db.users[db.cur];if(u){u.paid=false;sv(db)}go()};
-$("txn").oninput=function(){this.value=this.value.replace(/\D/g,"");$("m2").textContent="";$("txn").style.borderColor=""};
+$("txn").oninput=function(){this.value=this.value.trim();$("m2").textContent="";$("txn").style.borderColor=""};
+$("t1").onclick=function(){$("p1").hidden=false;$("p2").hidden=true;$("t1").className="alt tab on";$("t2").className="alt tab"};
+$("t2").onclick=function(){$("p1").hidden=true;$("p2").hidden=false;$("t2").className="alt tab on";$("t1").className="alt tab"};
+try{var q=new URLSearchParams(location.search),pid=q.get("razorpay_payment_id"),st=q.get("razorpay_payment_link_status");
+if(pid&&/^pay_[A-Za-z0-9]{14}$/.test(pid)&&(!st||st==="paid")&&db.cur&&db.users[db.cur]){history.replaceState(null,"",location.pathname);confirmPay(pid)}}catch(e){}
 go();
 </script>
 </body>
