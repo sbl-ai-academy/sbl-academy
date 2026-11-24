@@ -150,7 +150,7 @@ $("reg").onclick=function(){var n=$("name").value.trim(),p=$("phone").value.trim
 if(n.length<2)return $("m1").textContent="പേര് നൽകുക";
 if(!/^[6-9]\d{9}$/.test(p))return $("m1").textContent="ശരിയായ 10 അക്ക മൊബൈൽ നമ്പർ നൽകുക";
 if(!/^\S+@\S+\.\S+$/.test(e))return $("m1").textContent="ശരിയായ ഇമെയിൽ നൽകുക";
-$("m1").textContent="";var old=db.users[p];db.users[p]={name:n,email:e,paid:old?old.paid:false,txn:old?old.txn:""};db.cur=p;sv(db);go()};
+$("m1").textContent="";var old=db.users[p];db.users[p]={name:n,email:e,paid:old?old.paid:false,txn:old?old.txn:""};db.cur=p;sv(db);if(API_URL)fetch(API_URL+"?action=register&name="+encodeURIComponent(n)+"&phone="+p+"&email="+encodeURIComponent(e)).catch(function(){});go()};
 function fin(t){var u=db.users[db.cur];u.paid=true;u.txn=t;sv(db);go()}
 function confirmPay(t){var m=$("m2"),u=db.users[db.cur];m.textContent="";
 if(!API_URL){fin(t);return}
