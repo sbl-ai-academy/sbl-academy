@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>AI Course in Malayalam · Basics to Advance</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;600;800&family=Sora:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;600;800&family=Sora:wght@500;700&family=Patrick+Hand&display=swap">
 <style>
 :root{--bg:#f0f3f8;--ink:#13203b;--mute:#4d5b78;--card:#fff;--line:#d5dcea;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -26,9 +26,9 @@ h1,h2{font-family:"Sora","Noto Sans Malayalam",sans-serif;line-height:1.2;margin
 .play b{font-family:"Sora",sans-serif;font-size:1.3rem}
 .seen{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:12px;padding:14px;border:2px solid #f2b01e;border-radius:12px;background:#f2b01e;color:#201600;font:inherit;font-weight:700;font-size:1.05rem;cursor:pointer;transition:background .2s,color .2s}
 .seen:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
-.s .seen{background:#1f9d55;border-color:#1f9d55;color:#fff}
+.s #seen,.s2 #seen2,.s3 #seen3{background:#1f9d55;border-color:#1f9d55;color:#fff}
 .tick{display:none;font-style:normal;background:#fff;color:#1f7a45;border-radius:999px;padding:0 9px;font-size:.9rem;margin-left:4px}
-.s .tick{display:inline-block}
+.s.s2 .t1,.s3 .t3{display:inline-block}
 :root{--gr:#1a7f1f;--g1:#0b2f80;--g2:#1a7f1f}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--gr:#6fe07a;--g1:#8db1ff;--g2:#6fe07a}}
 body{background:radial-gradient(900px 520px at 8% -8%,rgba(11,47,128,.22),transparent 60%),radial-gradient(800px 480px at 100% 4%,rgba(26,127,31,.20),transparent 58%),radial-gradient(700px 500px at 50% 110%,rgba(11,47,128,.14),transparent 60%),linear-gradient(180deg,#eef3fb 0%,#f3f8f4 100%);background-attachment:fixed;min-height:100vh}
@@ -123,7 +123,44 @@ html:not(.ok) body{overflow:hidden}
 .ac span{flex:none;font-size:.8rem;padding:2px 12px;border-radius:999px;border:1px solid var(--line);color:var(--mute)}
 .ac.on{border-color:#1a7f1f;background:rgba(26,127,31,.10)}
 .ac.on span{background:#1a7f1f;border-color:#1a7f1f;color:#fff}
-.foot{text-align:center;padding:22px 16px calc(24px + env(safe-area-inset-bottom,0px));color:var(--mute);font-size:.9rem}
+.vnote{margin:10px 0 0;color:var(--mute);font-size:.92rem}
+.steps li>div{min-width:0;flex:1}
+.sv{margin-top:10px}
+.frame.vert{aspect-ratio:9/16;max-width:300px;max-height:75vh}
+.sw{display:inline-block;margin-top:8px;padding:6px 14px;border-radius:999px;background:#0b2f80;color:#fff;text-decoration:none;font-size:.85rem}
+.stk{flex:none;width:34px;height:34px;border-radius:50%;border:2px solid var(--line);background:transparent;color:transparent;font-size:1rem;line-height:1;cursor:pointer}
+.stk[aria-pressed="true"]{background:#1f9d55;border-color:#1f9d55;color:#fff}
+.stk:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.steps li.done .sn{background:#1f9d55}
+.prog{margin-left:8px;font-size:.8rem;font-weight:600;color:#fff;background:#1f9d55;border-radius:999px;padding:2px 10px;vertical-align:middle}
+:root{--paper:#fffdf6;--rule:#cfe0f3;--noteBg:#dff5e3}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#182240;--rule:#2a3a63;--noteBg:rgba(47,160,70,.18)}}
+.board{position:relative;margin:6px 0 34px;padding:20px 18px 22px;border:10px solid #8a5a2c;border-radius:14px;background:radial-gradient(circle at 20% 15%,rgba(255,255,255,.07),transparent 40%),linear-gradient(160deg,#1d4b2c,#143a22);box-shadow:0 8px 18px rgba(0,0,0,.28),inset 0 0 22px rgba(0,0,0,.35);color:#f4fff6;max-width:760px}
+.board::after{content:"";position:absolute;left:14px;right:14px;bottom:-24px;height:10px;border-radius:0 0 6px 6px;background:#6e4520;box-shadow:0 3px 6px rgba(0,0,0,.3)}
+.chalk{font-family:"Patrick Hand","Sora",sans-serif;font-size:1.15rem;letter-spacing:.08em;color:#cdeed3;text-transform:uppercase}
+.board h2{color:#fff;font-size:clamp(1.5rem,5vw,2.3rem);margin-top:4px}
+.topic .board .ml{color:#d8f3dc;font-size:clamp(1.15rem,4vw,1.5rem);font-weight:800;margin-top:4px}
+.board .sum{margin:12px 0 0;color:#e7f8ea}
+.sheet{position:relative;max-width:760px;margin:0 0 18px;padding:0 16px 4px 46px;border-radius:8px;background:repeating-linear-gradient(transparent 0 31px,var(--rule) 31px 32px),var(--paper);border:1px solid var(--line);box-shadow:0 3px 10px rgba(0,0,0,.08)}
+.sheet::before{content:"";position:absolute;top:0;bottom:0;left:32px;width:2px;background:#e57373;opacity:.7}
+.sheet h3{margin:0;font-family:"Sora","Noto Sans Malayalam",sans-serif;font-size:1.1rem;line-height:32px;color:var(--ink)}
+.sheet p,.sheet li,.sheet .eg{margin:0;line-height:32px}
+.sheet ul{margin:0;padding-left:20px}
+.eg b{color:var(--g1)}
+.note{max-width:760px;margin:6px 0 0;padding:14px 16px;border-radius:10px;background:var(--noteBg);border-left:6px solid #1a7f1f;font-family:"Patrick Hand","Noto Sans Malayalam",sans-serif;font-size:1.1rem}
+.note b{color:var(--gr);margin-right:6px}
+.seen{display:inline-flex;width:auto;padding:6px 16px;margin-top:10px;border-radius:999px;font-size:.85rem}
+.dbtn{flex:1 1 140px;padding:13px 16px;border:0;border-radius:12px;background:linear-gradient(135deg,#d4f5dc,#9fe3b2);color:#0f3d1a;font:inherit;font-weight:700;opacity:.9;cursor:not-allowed}
+.home2.quick{margin:22px 0 0;max-width:760px}
+.dbtn small{display:block;font-weight:400;font-size:.8rem}
+.vh{margin:22px 0 8px;font-family:"Sora",sans-serif;font-size:1.05rem}
+.steps{list-style:none;margin:0;padding:0}
+.steps li{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-top:1px solid var(--line)}
+.steps li:first-child{border-top:0}
+.sn{flex:none;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--c),var(--c2,var(--c)));color:var(--t);display:grid;place-items:center;font-weight:700}
+.steps small{display:block;color:var(--mute);font-weight:400}
+.foot img{width:28px;height:28px;border-radius:6px;background:#fff;padding:1px}
+.foot{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;padding:22px 16px calc(24px + env(safe-area-inset-bottom,0px));color:var(--mute);font-size:.9rem}
 @media (prefers-reduced-motion:reduce){.drawer,.scrim{transition:none}}
 .mod{display:block;font-style:normal;font-size:.8rem;font-weight:700;opacity:.9;margin-bottom:4px}
 .modno{display:inline-block;background:var(--c);color:var(--t);border-radius:999px;padding:2px 14px;font-weight:700;font-size:.85rem;margin-bottom:8px}
@@ -161,7 +198,7 @@ html:not(.ok) body{overflow:hidden}
 <section class="page on" id="home">
  <div class="hero">
   <h1>AI Course in Malayalam<small>Basics to Advance</small></h1>
-  <div class="video"><div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/In2ekCHtNMM?rel=0&modestbranding=1&playsinline=1&enablejsapi=1" title="Introduction video" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div></div>
+  <div class="video"><div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/In2ekCHtNMM?rel=0&modestbranding=1&playsinline=1&enablejsapi=1" title="Introduction video" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div><p class="vnote">ഈ കോഴ്സിനെ പരിചയപ്പെടുത്തുന്ന ആമുഖ വീഡിയോ.</p></div>
  </div>
  <div class="grid" id="grid"></div>
  <div class="home2 hi"><a class="or" href="#tools">AI Tools</a><a class="or" href="#resources">Resources</a></div>
@@ -183,9 +220,9 @@ html:not(.ok) body{overflow:hidden}
 <div class="kv"><span>Tagline</span><b>Your Gateway to Digital Skills</b></div></div>
 <div class="card2"><h3>Connect with us</h3><div class="socs" id="csoc"></div></div></section>
 <section class="page" id="tools"><a class="back" href="#home">← Home</a><div class="modno">AI Tools</div><h2>AI Tools</h2><div class="card2"><h3>Chat &amp; Assistants</h3><a class="lkrow" target="_blank" rel="noopener" href="https://chatgpt.com"><span><b>ChatGPT</b><small>Chat, writing, prompts · ചാറ്റ്, എഴുത്ത്, പ്രോംപ്റ്റുകൾ</small></span></a><a class="lkrow" target="_blank" rel="noopener" href="https://gemini.google.com"><span><b>Gemini</b><small>Google AI assistant · ഗൂഗിളിന്റെ AI അസിസ്റ്റന്റ്</small></span></a><a class="lkrow" target="_blank" rel="noopener" href="https://claude.ai"><span><b>Claude</b><small>Writing, analysis, coding · എഴുത്ത്, വിശകലനം, കോഡിംഗ്</small></span></a><a class="lkrow" target="_blank" rel="noopener" href="https://www.perplexity.ai"><span><b>Perplexity</b><small>AI search with sources · ഉറവിടങ്ങളോടെ AI സെർച്ച്</small></span></a></div><div class="card2"><h3>Image &amp; Design</h3><a class="lkrow" target="_blank" rel="noopener" href="https://www.canva.com"><span><b>Canva</b><small>Design and social posts · ഡിസൈൻ, സോഷ്യൽ പോസ്റ്റുകൾ</small></span></a></div><div class="card2"><h3>Video</h3><a class="lkrow" target="_blank" rel="noopener" href="https://labs.google/flow"><span><b>Google Flow</b><small>AI video creation (used in the course) · AI വീഡിയോ നിർമാണം</small></span></a><a class="lkrow" target="_blank" rel="noopener" href="https://www.capcut.com"><span><b>CapCut</b><small>Video editing · വീഡിയോ എഡിറ്റിംഗ്</small></span></a></div><div class="card2"><h3>Audio</h3><a class="lkrow" target="_blank" rel="noopener" href="https://elevenlabs.io"><span><b>ElevenLabs</b><small>AI voice and speech · AI ശബ്ദവും സംസാരവും</small></span></a><a class="lkrow" target="_blank" rel="noopener" href="https://suno.com"><span><b>Suno</b><small>AI music · AI സംഗീതം</small></span></a></div><div class="card2"><h3>Study</h3><a class="lkrow" target="_blank" rel="noopener" href="https://notebooklm.google.com"><span><b>NotebookLM</b><small>Learn from your own documents · സ്വന്തം ഡോക്യുമെന്റുകൾ വഴി പഠിക്കാം</small></span></a></div></section>
-<section class="page" id="resources"><a class="back" href="#home">← Home</a><div class="modno">Resources</div><h2>Resources</h2><div class="card2"><h3>Course videos</h3><a class="lkrow" target="_blank" rel="noopener" href="https://youtu.be/In2ekCHtNMM"><span><b>Course Introduction</b><small>Start here · തുടങ്ങാൻ</small></span></a><a class="lkrow" target="_blank" rel="noopener" href="https://youtu.be/enuIMO7oHbU"><span><b>Introduction to AI</b><small>Module 1 video · മൊഡ്യൂൾ 1 വീഡിയോ</small></span></a></div><div class="card2"><h3>AI Video Creation lessons</h3><a class="lkrow" target="_blank" rel="noopener" href="https://youtube.com/shorts/7Bqaa5y2zFA"><span><b>1. Introduction</b><small>ആമുഖം</small></span></a><a class="lkrow" target="_blank" rel="noopener" href="https://youtube.com/shorts/BYQbJfy5sp0"><span><b>2. Tools</b><small>ടൂളുകൾ</small></span></a><a class="lkrow" target="_blank" rel="noopener" href="https://youtu.be/wvqqOLWBQ8M"><span><b>3. Prompt Generation</b><small>പ്രോംപ്റ്റ് ജനറേഷൻ</small></span></a><a class="lkrow" target="_blank" rel="noopener" href="https://youtube.com/shorts/b3xmowM_vD8"><span><b>4. Adding Reference</b><small>റഫറൻസ് ചേർക്കൽ</small></span></a><a class="lkrow" target="_blank" rel="noopener" href="https://youtube.com/shorts/ouIYQrMo-Ts"><span><b>5. Create</b><small>ക്രിയേറ്റ്</small></span></a><a class="lkrow" target="_blank" rel="noopener" href="https://youtube.com/shorts/iH2e_4NKPjw"><span><b>6. Edit</b><small>എഡിറ്റ്</small></span></a><a class="lkrow" target="_blank" rel="noopener" href="https://youtube.com/shorts/sEldxNWyXz8"><span><b>7. Publish</b><small>പബ്ലിഷ്</small></span></a></div><div class="card2"><h3>Download</h3><a class="lkrow" target="_blank" rel="noopener" href="AI_Video_Creation_Tutorial_Malayalam.pdf"><span><b>Tutorial PDF – AI Video Creation</b><small>മലയാളം · Malayalam</small></span></a></div><div class="card2"><h3>Channels</h3><a class="lkrow" target="_blank" rel="noopener" href="https://youtube.com/@smartbizlearn"><span><b>YouTube</b><small>@smartbizlearn</small></span></a><a class="lkrow" target="_blank" rel="noopener" href="https://whatsapp.com/channel/0029VbE7gbqCxoB1d4s1b10j"><span><b>WhatsApp Channel</b><small>Smart BizLearn</small></span></a><a class="lkrow" target="_blank" rel="noopener" href="https://t.me/SBizLearn"><span><b>Telegram</b><small>@SBizLearn</small></span></a></div></section>
+<section class="page" id="resources"><a class="back" href="#home">← Home</a><div class="modno">Resources</div><h2>Resources</h2><div class="card2"><h3>Course videos</h3><a class="lkrow" target="_blank" rel="noopener" href="https://youtu.be/In2ekCHtNMM"><span><b>Course Introduction</b><small>Start here · തുടങ്ങാൻ</small></span></a><a class="lkrow" target="_blank" rel="noopener" href="https://youtu.be/enuIMO7oHbU"><span><b>Introduction to AI</b><small>Module 1 video · മൊഡ്യൂൾ 1 വീഡിയോ</small></span></a></div><div class="card2"><h3>AI Video Creation lessons</h3><a class="lkrow" target="_blank" rel="noopener" href="https://youtube.com/shorts/7Bqaa5y2zFA"><span><b>1. Introduction</b><small>ആമുഖം</small></span></a><a class="lkrow" target="_blank" rel="noopener" href="https://youtube.com/shorts/BYQbJfy5sp0"><span><b>2. Tools</b><small>ടൂളുകൾ</small></span></a><a class="lkrow" target="_blank" rel="noopener" href="https://youtu.be/wvqqOLWBQ8M"><span><b>3. Prompt Generation</b><small>പ്രോംപ്റ്റ് ജനറേഷൻ</small></span></a><a class="lkrow" target="_blank" rel="noopener" href="https://youtube.com/shorts/b3xmowM_vD8"><span><b>4. Adding Reference</b><small>റഫറൻസ് ചേർക്കൽ</small></span></a><a class="lkrow" target="_blank" rel="noopener" href="https://youtube.com/shorts/ouIYQrMo-Ts"><span><b>5. Create</b><small>ക്രിയേറ്റ്</small></span></a><a class="lkrow" target="_blank" rel="noopener" href="https://youtube.com/shorts/iH2e_4NKPjw"><span><b>6. Edit</b><small>എഡിറ്റ്</small></span></a><a class="lkrow" target="_blank" rel="noopener" href="https://youtube.com/shorts/sEldxNWyXz8"><span><b>7. Publish</b><small>പബ്ലിഷ്</small></span></a></div><div class="card2"><h3>Tests &amp; Certificate</h3><div class="home2" style="margin-top:0"><button type="button" class="dbtn" disabled>Tests<small>Coming soon</small></button><button type="button" class="dbtn" disabled>Certificate<small>Coming soon</small></button></div></div><div class="card2"><h3>Channels</h3><a class="lkrow" target="_blank" rel="noopener" href="https://youtube.com/@smartbizlearn"><span><b>YouTube</b><small>@smartbizlearn</small></span></a><a class="lkrow" target="_blank" rel="noopener" href="https://whatsapp.com/channel/0029VbE7gbqCxoB1d4s1b10j"><span><b>WhatsApp Channel</b><small>Smart BizLearn</small></span></a><a class="lkrow" target="_blank" rel="noopener" href="https://t.me/SBizLearn"><span><b>Telegram</b><small>@SBizLearn</small></span></a></div></section>
 </main>
-<footer class="foot">Powered by Pandian’s</footer>
+<footer class="foot"><img src="data:image/webp;base64,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" alt="" width="28" height="28"><span>Powered by Pandian’s Group</span></footer>
 <script>
 var T=[
 ["intro","Introduction to AI","AI ആമുഖം",
@@ -222,33 +259,77 @@ var T=[
 [["Draft emails, ads and product descriptions","ഇമെയിൽ, പരസ്യം, ഉൽപ്പന്ന വിവരണം എന്നിവ തയ്യാറാക്കൽ"],["Analyse customer feedback and trends","ഉപഭോക്തൃ അഭിപ്രായങ്ങളും ട്രെൻഡുകളും വിശകലനം ചെയ്യൽ"],["Keep customer data private","ഉപഭോക്തൃ ഡാറ്റ സ്വകാര്യമായി സൂക്ഷിക്കുക"]]]
 ];
 var grid=document.getElementById("grid"),box=document.getElementById("topics");
-function href(id){return id==="video"?"video.html":"#"+id}
+function href(id){return "#"+id}
 function extra(id){
+ if(id==="generative")return '<div class="video"><h3 class="vh">Generative AI</h3><div class="frame"><iframe id="ytGen" src="https://www.youtube-nocookie.com/embed/2pxxHDIhaNw?rel=0&modestbranding=1&playsinline=1&enablejsapi=1" title="Generative AI" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div><p class="vnote">ടെക്സ്റ്റ്, ചിത്രം, ശബ്ദം, വീഡിയോ എന്നിവ ഉണ്ടാക്കുന്ന Generative AI എങ്ങനെ പ്രവർത്തിക്കുന്നു എന്ന് ഈ വീഡിയോയിൽ കാണാം.</p><button type="button" class="seen" id="seen3" aria-pressed="false"></button></div>';
  if(id!=="intro")return "";
- return '<div class="video"><div class="frame"><iframe id="ytIntro" src="https://www.youtube-nocookie.com/embed/enuIMO7oHbU?rel=0&modestbranding=1&playsinline=1&enablejsapi=1" title="Introduction to AI" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div><button type="button" class="seen" id="seen" aria-pressed="false"></button></div>';
+ return '<div class="video"><h3 class="vh">Introduction to AI</h3><div class="frame"><iframe id="ytIntro" src="https://www.youtube-nocookie.com/embed/enuIMO7oHbU?rel=0&modestbranding=1&playsinline=1&enablejsapi=1" title="Introduction to AI" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div><p class="vnote">AI എന്താണെന്നും നമ്മുടെ ദൈനംദിന ജീവിതത്തിൽ അത് എങ്ങനെ ഉപയോഗിക്കുന്നു എന്നും ലളിതമായി മനസ്സിലാക്കാം.</p><button type="button" class="seen" id="seen" aria-pressed="false"></button></div>'+'<div class="video"><h3 class="vh">Machine Learning</h3><div class="frame"><iframe id="ytML" src="https://www.youtube-nocookie.com/embed/8FJVEBTBdJU?rel=0&modestbranding=1&playsinline=1&enablejsapi=1" title="Machine Learning" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div><p class="vnote">ഡാറ്റയിൽ നിന്ന് കമ്പ്യൂട്ടർ സ്വയം പഠിച്ച് തീരുമാനങ്ങളെടുക്കുന്ന രീതിയാണ് Machine Learning.</p><button type="button" class="seen" id="seen2" aria-pressed="false"></button></div>';
+}
+var L={
+intro:{s:"AI, Machine Learning എന്നിവയുടെ അടിസ്ഥാനം ലളിതമായി പഠിക്കാം.",c:[
+["AI എന്താണ്?","മനുഷ്യൻ ചിന്തിച്ച് ചെയ്യുന്ന ജോലികൾ — പഠിക്കുക, തിരിച്ചറിയുക, തീരുമാനമെടുക്കുക, ഭാഷ മനസ്സിലാക്കുക — കമ്പ്യൂട്ടറിനെക്കൊണ്ട് ചെയ്യിക്കുന്ന സാങ്കേതികവിദ്യയാണ് നിർമിതബുദ്ധി (AI).",["ഡാറ്റ: AI പഠിക്കുന്നത് ധാരാളം ഉദാഹരണങ്ങളിൽ നിന്നാണ്.","Algorithm: ഡാറ്റയിൽ നിന്ന് ഒരു രീതി (pattern) കണ്ടെത്താനുള്ള നിർദേശങ്ങളുടെ കൂട്ടം.","Model: പഠിച്ചതിന് ശേഷം പുതിയ ചോദ്യങ്ങൾക്ക് ഉത്തരം നൽകുന്ന സംവിധാനം."],"ഫോണിൽ ശബ്ദം കൊണ്ട് തിരയുന്നത് (Voice Search), മാപ്പിലെ വഴി നിർദേശം, ഇഷ്ടപ്പെടാൻ സാധ്യതയുള്ള വീഡിയോ നിർദേശിക്കുന്നത്."],
+["Machine Learning","ഓരോ നിയമവും പ്രോഗ്രാമർ എഴുതിക്കൊടുക്കുന്നതിന് പകരം, ഉദാഹരണങ്ങൾ കണ്ട് കമ്പ്യൂട്ടർ സ്വയം നിയമങ്ങൾ പഠിച്ചെടുക്കുന്ന രീതിയാണ് Machine Learning. AI-യുടെ ഒരു പ്രധാന ഭാഗമാണിത്.",["Supervised Learning: ശരിയായ ഉത്തരം കൂടി നൽകിയ ഡാറ്റയിൽ നിന്ന് പഠിക്കുന്നു (ഉദാ: സ്പാം ഇമെയിൽ തിരിച്ചറിയൽ).","Unsupervised Learning: ഉത്തരമില്ലാത്ത ഡാറ്റയിൽ സമാനതകൾ കണ്ടെത്തി ഗ്രൂപ്പുകളാക്കുന്നു (ഉദാ: ഉപഭോക്താക്കളെ തരം തിരിക്കൽ).","Reinforcement Learning: ശ്രമിച്ചും തെറ്റിയും സമ്മാനം (reward) നേടിയും പഠിക്കുന്നു (ഉദാ: ഗെയിം കളിക്കുന്ന AI)."],"ആയിരക്കണക്കിന് പൂച്ചയുടെയും നായയുടെയും ചിത്രങ്ങൾ കണ്ട ശേഷം പുതിയ ചിത്രം ഏതാണെന്ന് തിരിച്ചറിയുന്നു."]],
+r:"AI ഒരു വലിയ കുട; Machine Learning അതിനുള്ളിലെ ഒരു പഠനരീതിയാണ്."},
+generative:{s:"ടെക്സ്റ്റ്, ചിത്രം, വീഡിയോ എന്നിവ പുതുതായി ഉണ്ടാക്കുന്ന Generative AI-യെ അറിയാം.",c:[
+["Generative AI എന്താണ്?","ഉള്ളത് തിരിച്ചറിയുക മാത്രമല്ല, ഒരു നിർദേശത്തിൽ (prompt) നിന്ന് പുതിയ ടെക്സ്റ്റ്, ചിത്രം, ശബ്ദം, വീഡിയോ, കോഡ് എന്നിവ ഉണ്ടാക്കുന്ന AI ആണ് Generative AI.",["LLM (Large Language Model): ധാരാളം ടെക്സ്റ്റ് വായിച്ച് പഠിച്ച്, അടുത്ത വാക്ക് ഏതാകുമെന്ന് ഊഹിച്ച് എഴുതുന്ന model.","ചിത്രം, വീഡിയോ model-കൾ: വിവരണത്തിൽ നിന്ന് ചിത്രവും വീഡിയോയും ഉണ്ടാക്കുന്നു.","Multimodal: ടെക്സ്റ്റ്, ചിത്രം, ശബ്ദം എല്ലാം ഒരുമിച്ച് മനസ്സിലാക്കുന്നു."],"“ഓണത്തെക്കുറിച്ച് ഒരു ചെറിയ ഉപന്യാസം എഴുതൂ” എന്ന് പറഞ്ഞാൽ ഉടൻ ഉപന്യാസം കിട്ടും."],
+["ശ്രദ്ധിക്കേണ്ട കാര്യങ്ങൾ","Generative AI ചിലപ്പോൾ ആത്മവിശ്വാസത്തോടെ തെറ്റായ വിവരം പറയും. ഇതിനെ hallucination എന്ന് പറയുന്നു.",["പ്രധാന വിവരങ്ങൾ വിശ്വസനീയമായ ഉറവിടത്തിൽ നോക്കി ഉറപ്പാക്കുക.","സ്വകാര്യ, രഹസ്യ വിവരങ്ങൾ AI-ക്ക് നൽകരുത്.","AI ഉണ്ടാക്കിയ ഉള്ളടക്കം ആണെന്ന് വ്യക്തമാക്കുക."],"ഒരു ഉത്തരം വിശ്വസിക്കുംമുമ്പ് മറ്റൊരിടത്ത് കൂടി നോക്കുക."]],
+r:"Generative AI നിങ്ങളുടെ സഹായിയാണ്; പരിശോധനയും അവസാന തീരുമാനവും നിങ്ങളുടേതാണ്."},
+chatbots:{s:"ചാറ്റ്ബോട്ടുകളും AI അസിസ്റ്റന്റുകളും എങ്ങനെ പ്രവർത്തിക്കുന്നു എന്ന് അറിയാം.",c:[
+["ചാറ്റ്ബോട്ടും AI അസിസ്റ്റന്റും","സംഭാഷണത്തിലൂടെ ചോദ്യങ്ങൾക്ക് ഉത്തരം നൽകുകയും ജോലികൾ ചെയ്തുതരികയും ചെയ്യുന്ന സോഫ്റ്റ്‌വെയറാണ് ചാറ്റ്ബോട്ട്. പുതിയ AI അസിസ്റ്റന്റുകൾ നമ്മുടെ ഭാഷയിൽ തന്നെ സംസാരിക്കും.",["നിയമം അടിസ്ഥാനമാക്കിയ ബോട്ട് (Rule-based): മുൻകൂട്ടി തയ്യാറാക്കിയ ചോദ്യോത്തരങ്ങൾ മാത്രം.","AI ബോട്ട്: പുതിയ ചോദ്യങ്ങൾക്കും സ്വന്തമായി ഉത്തരം ഉണ്ടാക്കുന്നു.","വോയ്സ് അസിസ്റ്റന്റ്: ശബ്ദത്തിലൂടെ ഇതേ സേവനം നൽകുന്നു."],"കടകളുടെ വെബ്സൈറ്റിലെ സഹായ ചാറ്റ്; ഇമെയിൽ എഴുതാനും ചുരുക്കാനും പരിഭാഷപ്പെടുത്താനും ChatGPT, Gemini പോലുള്ളവ."]],
+r:"വ്യക്തമായി ചോദിച്ചാൽ നല്ല ഉത്തരം കിട്ടും; ഉത്തരം ഒരിക്കൽ പരിശോധിക്കുക."},
+prompts:{s:"നല്ല ഉത്തരം കിട്ടാൻ വ്യക്തമായ prompt എങ്ങനെ എഴുതാം എന്ന് പഠിക്കാം.",c:[
+["പ്രോംപ്റ്റ് (Prompt) എന്താണ്?","AI-ക്ക് നൽകുന്ന നിർദേശമാണ് prompt. നിർദേശം എത്ര വ്യക്തമാണോ ഉത്തരം അത്രയും നല്ലതായിരിക്കും.",["റോൾ: AI ആരായി പെരുമാറണം (ഉദാ: അധ്യാപകൻ).","ജോലി: എന്ത് ചെയ്യണം.","സന്ദർഭം: ആർക്കുവേണ്ടി, എന്തിനുവേണ്ടി.","രൂപം: പട്ടിക, ലിസ്റ്റ്, എത്ര നീളം."],"മോശം: “ബിസിനസ്സിനെ പറ്റി പറയൂ.” നല്ലത്: “ഒരു ചെറിയ തുണിക്കട ഓൺലൈനിൽ വളർത്താൻ 5 ലളിതമായ വഴികൾ മലയാളത്തിൽ പട്ടികയായി തരൂ.”"]],
+r:"ഉത്തരം ഇഷ്ടപ്പെട്ടില്ലെങ്കിൽ കൂടുതൽ നിർദേശങ്ങൾ നൽകി മെച്ചപ്പെടുത്തുക."},
+images:{s:"വിവരണം നൽകി AI ചിത്രങ്ങൾ ഉണ്ടാക്കാം.",c:[
+["ടെക്സ്റ്റിൽ നിന്ന് ചിത്രം","വിവരണത്തിൽ നിന്ന് പുതിയ ചിത്രങ്ങൾ വരയ്ക്കുന്ന AI ആണ് ഇമേജ് ജനറേഷൻ. ധാരാളം ചിത്രങ്ങളും അവയുടെ വിവരണങ്ങളും കണ്ട് പഠിച്ച model-കളാണ് ഇതിന് പിന്നിൽ.",["വിഷയം: എന്ത് വേണം (ഉദാ: ചായക്കടയിലെ ഒരു സ്ത്രീ).","ശൈലി: ഫോട്ടോ, കാർട്ടൂൺ, വാട്ടർകളർ തുടങ്ങിയവ.","വെളിച്ചവും നിറവും: പ്രഭാതവെളിച്ചം, ചൂടുള്ള നിറങ്ങൾ."],"പോസ്റ്റർ, സോഷ്യൽ മീഡിയ പോസ്റ്റ്, ഉൽപ്പന്നത്തിന്റെ ചിത്രം."]],
+r:"പകർപ്പവകാശം മാനിക്കുക; വ്യാജ ചിത്രങ്ങൾ യഥാർഥമെന്ന് പറഞ്ഞ് പ്രചരിപ്പിക്കരുത്."},
+video:{s:"തുടക്കം മുതൽ പ്രസിദ്ധീകരിക്കുന്നത് വരെ AI വീഡിയോ നിർമാണത്തിന്റെ ഘട്ടങ്ങൾ.",c:[
+["ടെക്സ്റ്റിൽ നിന്ന് വീഡിയോ","വിവരണമോ ചിത്രമോ നൽകി ചെറിയ വീഡിയോ ക്ലിപ്പുകൾ ഉണ്ടാക്കുകയോ ഉള്ള വീഡിയോ എഡിറ്റ് ചെയ്യുകയോ ചെയ്യുന്ന AI ആണ് വീഡിയോ ജനറേഷൻ.",["രംഗത്തിന്റെ വിവരണം: ആര്, എവിടെ, എന്ത് ചെയ്യുന്നു.","ക്യാമറ നിർദേശം: ക്ലോസ്-അപ്പ്, പാനിംഗ് തുടങ്ങിയവ.","എഡിറ്റ്: ക്ലിപ്പുകൾ ചേർത്ത് സംഗീതവും അടിക്കുറിപ്പും (caption) ചേർക്കുക."],"ഒരു ഉൽപ്പന്നത്തിന്റെ 8 സെക്കൻഡ് പരസ്യ ക്ലിപ്പ്."]],
+r:"AI ഉണ്ടാക്കിയ വീഡിയോ ആണെങ്കിൽ അത് വ്യക്തമായി അറിയിക്കുക."},
+audio:{s:"AI ഉപയോഗിച്ച് ശബ്ദവും സംഗീതവും ഉണ്ടാക്കുന്നത് അറിയാം.",c:[
+["ശബ്ദം ഉണ്ടാക്കുന്ന AI","എഴുത്ത് വായിച്ചുതരുക, സംസാരം എഴുത്താക്കുക, സംഗീതം ഉണ്ടാക്കുക എന്നിവ AI ചെയ്യും.",["Text-to-Speech: എഴുത്ത് ശബ്ദമാക്കുന്നു (വിവരണത്തിനും വീഡിയോയ്ക്കും).","Speech-to-Text: സംസാരം എഴുത്താക്കുന്നു (മീറ്റിംഗ് റെക്കോർഡിംഗ് ഉൾപ്പെടെ).","AI Music: വീഡിയോയ്ക്ക് പശ്ചാത്തല സംഗീതം."],"ഒരു ഉൽപ്പന്ന വീഡിയോയ്ക്ക് മലയാളത്തിൽ വോയ്സ് ഓവർ."]],
+r:"ഒരാളുടെ ശബ്ദം പകർത്തുംമുമ്പ് അയാളുടെ സമ്മതം വാങ്ങുക."},
+business:{s:"ബിസിനസ്സിലും മാർക്കറ്റിംഗിലും AI ഉപയോഗിച്ച് സമയം ലാഭിക്കാം.",c:[
+["ബിസിനസ്സിൽ AI","ഉള്ളടക്കം തയ്യാറാക്കൽ, ഉപഭോക്തൃ സേവനം, വിശകലനം തുടങ്ങിയ ആവർത്തന ജോലികൾ വേഗത്തിലാക്കി സമയവും ചെലവും ലാഭിക്കാൻ AI സഹായിക്കുന്നു.",["മാർക്കറ്റിംഗ്: പരസ്യ വാചകം, പോസ്റ്റ്, ഇമെയിൽ.","ഉപഭോക്തൃ സേവനം: ചാറ്റ്ബോട്ട് വഴി 24 മണിക്കൂറും മറുപടി.","വിശകലനം: ഉപഭോക്താക്കളുടെ അഭിപ്രായവും വിൽപ്പനയുടെ പോക്കും മനസ്സിലാക്കൽ."],"ഒരു ചെറിയ കടയുടെ ഒരാഴ്ചത്തെ ഇൻസ്റ്റാഗ്രാം പോസ്റ്റുകൾ AI ഉപയോഗിച്ച് തയ്യാറാക്കുന്നത്."]],
+r:"ഉപഭോക്താക്കളുടെ വിവരങ്ങൾ സ്വകാര്യമായി സൂക്ഷിക്കുക."}
+};
+function lesson(t,i){
+ var d=L[t[0]]||{c:[],r:""};
+ var h='<div class="board"><div class="chalk">Module '+(i+1)+' · Lesson</div><h2>'+t[1]+'</h2><div class="ml">'+t[2]+'</div><p class="sum">'+(d.s||t[4])+'</p></div>';
+ h+=extra(t[0]);
+ d.c.forEach(function(c){
+  h+='<div class="sheet"><h3>'+c[0]+'</h3><p>'+c[1]+'</p><ul>'+c[2].map(function(x){return "<li>"+x+"</li>"}).join("")+'</ul><div class="eg"><b>ഉദാഹരണം:</b> '+c[3]+'</div></div>'});
+ h+=steps(t[0]);
+ if(d.r)h+='<div class="note"><b>ഓർക്കുക:</b> '+d.r+'</div>';
+ return h;
+}
+var EMBED=true;
+function steps(id){
+ if(id!=="video")return "";
+ var S=[["Introduction","AI വീഡിയോ നിർമാണം എന്താണെന്നും എന്തൊക്കെ ചെയ്യാമെന്നും ഒരു ആമുഖം.","7Bqaa5y2zFA",1],["Tools","വീഡിയോ ഉണ്ടാക്കാൻ ഉപയോഗിക്കുന്ന AI ടൂളുകൾ പരിചയപ്പെടാം.","BYQbJfy5sp0",1],["Prompt Generation","വേണ്ട വീഡിയോയ്ക്ക് വ്യക്തമായ prompt എങ്ങനെ എഴുതാം.","wvqqOLWBQ8M",0],["Adding Reference","റഫറൻസ് ചിത്രം ചേർത്ത് ഫലം കൂടുതൽ കൃത്യമാക്കാം.","b3xmowM_vD8",1],["Create","Prompt ഉപയോഗിച്ച് വീഡിയോ ഉണ്ടാക്കാം.","ouIYQrMo-Ts",1],["Edit","ഉണ്ടാക്കിയ വീഡിയോ വെട്ടിച്ചുരുക്കി, ക്ലിപ്പുകൾ ചേർത്ത് മെച്ചപ്പെടുത്താം.","iH2e_4NKPjw",1],["Publish","അവസാന വീഡിയോ ഡൗൺലോഡ് ചെയ്ത് YouTube, Instagram പോലുള്ളവയിൽ പ്രസിദ്ധീകരിക്കാം.","sEldxNWyXz8",1]];
+ function vid(s,i){
+  if(EMBED)return '<div class="sv"><div class="frame'+(s[3]?' vert':'')+'"><iframe id="ytS'+(i+1)+'" src="https://www.youtube-nocookie.com/embed/'+s[2]+'?rel=0&modestbranding=1&playsinline=1&enablejsapi=1" title="'+s[0]+'" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div></div>';
+  return '<a class="sw" target="_blank" rel="noopener" href="https://youtu.be/'+s[2]+'">Watch video</a>';
+ }
+ return '<div class="card2"><h3>AI Video Creation Steps <span class="prog" id="sprog"></span></h3><ol class="steps">'+S.map(function(s,i){return '<li data-i="'+(i+1)+'"><span class="sn">'+(i+1)+'</span><div><b>'+s[0]+'</b><small>'+s[1]+'</small>'+vid(s,i)+'</div><button type="button" class="stk" aria-pressed="false" aria-label="Mark step '+(i+1)+' as watched">✓</button></li>'}).join("")+'</ol></div>';
 }
 T.forEach(function(t,i){
  var P=[["#0b2f80","#fff","#2a5fd6"],["#1a7f1f","#fff","#34b043"]][i%2];
- grid.insertAdjacentHTML("beforeend",'<a class="btn" style="--c:'+P[0]+';--t:'+P[1]+';--c2:'+P[2]+'" href="'+href(t[0])+'" data-n="'+(i+1)+'"><em class="mod">Module '+(i+1)+'</em><b>'+t[1]+(t[0]==="intro"?' <i class="tick">✓</i>':'')+'</b><span>'+t[2]+'</span></a>');
+ grid.insertAdjacentHTML("beforeend",'<a class="btn" style="--c:'+P[0]+';--t:'+P[1]+';--c2:'+P[2]+'" href="'+href(t[0])+'" data-n="'+(i+1)+'"><em class="mod">Module '+(i+1)+'</em><b>'+t[1]+(t[0]==="intro"?' <i class="tick t1">✓</i>':t[0]==="generative"?' <i class="tick t3">✓</i>':'')+'</b><span>'+t[2]+'</span></a>');
  var p=T[i-1],n=T[i+1];
  var li=function(k){return t[5].map(function(x){return "<li>"+x[k]+"</li>"}).join("")};
  box.insertAdjacentHTML("beforeend",
  '<section class="page topic" id="'+t[0]+'" style="--c:'+P[0]+';--t:'+P[1]+';--c2:'+P[2]+'"><a class="back" href="#home">← Home</a>'+
- '<div class="modno">Module '+(i+1)+'</div><h2>'+t[1]+'</h2><div class="ml">'+t[2]+'</div>'+extra(t[0])+'<div class="cols">'+
- '<div class="col"><h3>മലയാളം</h3><p>'+t[4]+'</p><ul>'+li(1)+'</ul></div>'+
- '<div class="col"><h3>English</h3><p>'+t[3]+'</p><ul>'+li(0)+'</ul></div></div>'+
+ lesson(t,i)+
  '<div class="nav"><span>'+(p?'<a href="'+href(p[0])+'">← '+p[1]+'</a>':'')+'</span><span>'+(n?'<a href="'+href(n[0])+'">'+n[1]+' →</a>':'')+'</span></div></section>');
 });
-var seenBox=document.getElementById("seen");
-function mark(v){document.body.classList.toggle("s",v);if(seenBox){seenBox.setAttribute("aria-pressed",String(v));seenBox.textContent=v?"✓ Watched":"Tap when you have watched"}}
-var v0=false;try{v0=localStorage.getItem("seen-intro")==="1"}catch(e){}
-mark(v0);
-if(seenBox)seenBox.addEventListener("click",function(){var n=!document.body.classList.contains("s");mark(n);try{localStorage.setItem("seen-intro",n?"1":"0")}catch(e){}});
-function save(n){try{localStorage.setItem("seen-intro",n?"1":"0")}catch(e){}}
-window.onYouTubeIframeAPIReady=function(){
- if(!document.getElementById("ytIntro"))return;
- new YT.Player("ytIntro",{events:{onStateChange:function(e){if(e.data===0){mark(true);save(true)}}}});
-};
+var VID=[{btn:"seen",key:"seen-intro",cls:"s",yt:"ytIntro"},{btn:"seen2",key:"seen-ml",cls:"s2",yt:"ytML"},{btn:"seen3",key:"seen-gen",cls:"s3",yt:"ytGen"}];
+function mark(o,v){document.body.classList.toggle(o.cls,v);var b=document.getElementById(o.btn);if(b){b.setAttribute("aria-pressed",String(v));b.textContent=v?"\u2713 Watched":"Mark as watched"}}
+function save(o,v){try{localStorage.setItem(o.key,v?"1":"0")}catch(e){}}
+VID.forEach(function(o){var v=false;try{v=localStorage.getItem(o.key)==="1"}catch(e){}mark(o,v);
+ var b=document.getElementById(o.btn);
+ if(b)b.addEventListener("click",function(){var n=!document.body.classList.contains(o.cls);mark(o,n);save(o,n)})});
+window.onYouTubeIframeAPIReady=function(){VID.forEach(function(o){if(!document.getElementById(o.yt))return;new YT.Player(o.yt,{events:{onStateChange:function(e){if(e.data===0){mark(o,true);save(o,true)}}}})});for(var k=1;k<=7;k++){(function(k){if(document.getElementById("ytS"+k))new YT.Player("ytS"+k,{events:{onStateChange:function(e){if(e.data===0)setStep(k,true)}}})})(k)}};
 var ytTag=document.createElement("script");ytTag.src="https://www.youtube.com/iframe_api";document.head.appendChild(ytTag);
 var SOC=[
 ["WhatsApp Chat","Chat with us","https://wa.me/919544035833?text=Hi%2C%20I%20want%20to%20know%20more%20about%20the%20AI%20Course%20in%20Malayalam.","#128C7E",'<svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#25D366"/><path d="M16 7.5a8.5 8.5 0 0 0-7.3 12.8L7.5 24.5l4.3-1.1A8.5 8.5 0 1 0 16 7.5z" fill="none" stroke="#fff" stroke-width="1.8"/><path d="M12.8 12.2c.3 3.2 3 6 6.2 6.3l1.3-1.4-2-1-.9.8c-1.1-.5-2-1.4-2.5-2.5l.8-.9-1-2z" fill="#fff"/></svg>'],
@@ -288,6 +369,17 @@ document.getElementById("gf").addEventListener("submit",function(e){e.preventDef
   else{ge.hidden=false;gc.select()}})});
 setTimeout(function(){gc.focus()},50);
 })();
+document.querySelectorAll(".page").forEach(function(p){
+ if(p.id==="home")return;
+ var h="";
+ if(p.id!=="tools")h+='<a class="or" href="#tools">AI Tools</a>';
+ if(p.id!=="resources")h+='<a class="or" href="#resources">Resources</a>';
+ var d=document.createElement("div");d.className="home2 quick";d.innerHTML=h;
+ var nav=p.querySelector(".nav");if(nav)p.insertBefore(d,nav);else p.appendChild(d);
+});
+function setStep(i,v,st){var li=document.querySelector('.steps li[data-i="'+i+'"]');if(!li)return;li.classList.toggle("done",v);li.querySelector(".stk").setAttribute("aria-pressed",String(v));if(st!==false){try{localStorage.setItem("seen-step-"+i,v?"1":"0")}catch(e){}}stepProg()}
+function stepProg(){var n=document.querySelectorAll(".steps li.done").length,p=document.getElementById("sprog");if(p)p.textContent=n?n+"/7 \u2713":""}
+for(var q=1;q<=7;q++){(function(q){var v=false;try{v=localStorage.getItem("seen-step-"+q)==="1"}catch(e){}setStep(q,v,false);var li=document.querySelector('.steps li[data-i="'+q+'"]');if(li)li.querySelector(".stk").addEventListener("click",function(){setStep(q,!li.classList.contains("done"))})})(q)}
 function show(){
  var id=(location.hash||"#home").slice(1);
  var el=document.getElementById(id)||document.getElementById("home");
